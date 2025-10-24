@@ -1,0 +1,10 @@
+default:
+  base_url: https://httpbin.org
+  timeout: 20
+  retries: 5
+  retry_backoff: 1
+  headers:
+    Accept: application/json
+    User-Agent: api-test-framework/1.0
+
+
