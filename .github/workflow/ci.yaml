@@ -5,6 +5,16 @@ on:
     branches: [ main ]
   pull_request:
 
+env:
+  # Non-sensitive environment variables
+  BASE_URL: "https://httpbin.org"
+  TEST_ENV: "ci"
+  PYTHONPATH: "./src"
+  
+  # Sensitive variables (set these in GitHub Secrets)
+  API_KEY: ${{ secrets.API_KEY }}
+  API_SECRET: ${{ secrets.API_SECRET }}
+
 jobs:
   tests:
     runs-on: ubuntu-latest
