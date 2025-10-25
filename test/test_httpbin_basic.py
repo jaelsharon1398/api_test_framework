@@ -1,5 +1,5 @@
 import pytest
-from src.sunique_data_generation import random_query_params
+from src.unique_data_generation import random_query_params
 
 def test_get_ip(api_client):
     resp = api_client.get('/ip')
