@@ -1,5 +1,9 @@
+import sys
 import os
-import pytest
+
+# Add the src directory to Python path
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+
 from src.load_config import config
 from src.main import APIClient
 
