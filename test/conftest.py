@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-import os
-import pytest
-=======
 import sys
 import os
 import pytest
@@ -9,7 +5,6 @@ import pytest
 # Add the src directory to Python path
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
 
->>>>>>> d4123c45aa31909873be159735d692cdf268e8dc
 from src.load_config import config
 from src.main import APIClient
 

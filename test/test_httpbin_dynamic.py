@@ -1,25 +1,13 @@
-import pytest
-<<<<<<< HEAD
-from unique_data_generation import random_query_params
-=======
-from src.unique_data_generation import random_query_params
->>>>>>> d4123c45aa31909873be159735d692cdf268e8dc
+from src.unique_data_generation import random_user, random_uuid
 
-def test_get_ip(api_client):
-    resp = api_client.get('/ip')
+def test_post_echo(api_client):
+    user = random_user()
+    resp = api_client.post('/post', json=user)
     j = resp.json()
-    assert 'origin' in j
+    assert j['json']['email'] == user['email']
 
-def test_get_headers_inspection(api_client):
-    headers = {'X-Test-Header': 'pytest-header'}
-    resp = api_client.get('/headers', headers=headers)
+def test_dynamic_path_and_uuid(api_client):
+    uuid = random_uuid()
+    resp = api_client.get(f'/anything/{uuid}')
     j = resp.json()
-    # httpbin returns header keys capitalized, verify contains header
-    assert j['headers'].get('X-Test-Header') == 'pytest-header'
-
-def test_response_formats_json(api_client):
-    params = random_query_params(2)
-    resp = api_client.get('/get', params=params)
-    j = resp.json()
-    assert 'args' in j
-    assert set(j['args'].keys()) == set(params.keys())
+    assert j['url'].endswith(uuid)
